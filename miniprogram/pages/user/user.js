@@ -1,5 +1,6 @@
 // miniprogram/pages/user/user.js
 
+const app = getApp()
 const db = wx.cloud.database()
 
 Page({
@@ -24,7 +25,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.cloud.callFunction({
+      name : 'login' ,
+      data : {}
+    }).then((res)=>{
+      console.log(res);
+    });
   },
 
   /**
@@ -83,7 +89,16 @@ Page({
           time : new Date()
         }
       }).then((res)=>{
-        console.log(res);
+        // console.log(res);
+        db.collection('users').doc(res._id).get().then((res)=>{
+          // console.log(res.data);
+          app.userInfo = Object.assign( app.userInfo , res.data );
+          this.setData({
+            userPhoto : app.userInfo.userPhoto,
+            nickName : app.userInfo.nickName,
+            logged : true
+          });
+        });
       });
     }
   }
