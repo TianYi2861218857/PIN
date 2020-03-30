@@ -11,7 +11,8 @@ Page({
   data: {
     userPhoto: "/images/user/user-unlogin.png",
     nickName: "世界 ",
-    logged: false
+    logged: false,
+    disabled : true
   },
 
   /**
@@ -29,7 +30,25 @@ Page({
       name : 'login' ,
       data : {}
     }).then((res)=>{
-      console.log(res);
+      // console.log(res);
+      db.collection('users').where({
+        _openid : res.result.openid
+      }).get().then((res)=>{
+        if( res.data.length){
+          app.userInfo = Object.assign( app.userInfo , res.data[0]);
+          this.setData({
+            userPhoto : app.userInfo.userPhoto,
+            nickName : app.userInfo.nickName,
+            logged : true
+          });
+        }
+        else{
+          this.setData({
+            disabled : false
+          });
+        }
+        
+      });  
     });
   },
 
