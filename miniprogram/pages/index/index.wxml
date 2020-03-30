@@ -1,0 +1,65 @@
+<!--miniprogram/pages/index/index.wxml-->
+
+<view class="index">
+  <!-- 是否显示轮播图上的点,自动轮播,轮播时间,间隔时间 -->
+  <swiper class="index-swiper" indicator-dots="{{true}}"
+    autoplay="{{false}}"  circular="{{true}}">
+    <!-- wx:for 循环渲染指令(变量) wx:key  唯一标识(index为123索引值) -->
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+    <!-- <block wx:for="{{background}}" wx:key="*this"> -->
+      <swiper-item>
+        <!-- item 每一项 -->
+        <image src="{{item}}" class="slide-image" />
+        <!-- <view class="swiper-item {{item}}"></view> -->
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="index-tab">
+    <view class="active">人气榜</view>
+    <view>新品榜</view>
+  </view>
+
+  <view class="index-list">
+    <view class="index-list-item">
+      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
+      <view class="index-list-text">
+        <text>天一</text>
+        <text>
+          <text class="iconfont icon-buoumaotubiao15"></text>
+          <text>100</text>
+        </text>
+      </view>
+    </view> 
+    <view class="index-list-item">
+      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
+      <view class="index-list-text">
+        <text>天一</text>
+        <text>
+          <text class="iconfont icon-buoumaotubiao15"></text>
+          <text>100</text>
+        </text>
+      </view>
+    </view> 
+    <view class="index-list-item">
+      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
+      <view class="index-list-text">
+        <text>天一</text>
+        <text>
+          <text class="iconfont icon-buoumaotubiao15"></text>
+          <text>100</text>
+        </text>
+      </view>
+    </view> 
+    <view class="index-list-item">
+      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
+      <view class="index-list-text">
+        <text>天一</text>
+        <text>
+          <text class="iconfont icon-buoumaotubiao15"></text>
+          <text>100</text>
+        </text>
+      </view>
+    </view> 
+  </view>
+</view>

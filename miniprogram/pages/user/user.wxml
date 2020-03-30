@@ -1,0 +1,11 @@
+<!--miniprogram/pages/user/user.wxml-->
+<view class="user">
+
+  <view class="user-info">
+    <image src="{{ userPhoto }}"></image> 
+    <text wx:if="{{logged}}">欢迎您: {{ nickName }} </text>
+    <button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信登录</button>
+  </view>
+
+</view>
+ 
