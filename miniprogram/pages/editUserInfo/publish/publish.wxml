@@ -1,0 +1,6 @@
+<!--miniprogram/pages/editUserInfo/publish/publish.wxml-->
+
+<view>
+  <text>发布信息：</text>
+  <switch checked="{{isPublish}}" bindchange="switchChange"/>
+</view>

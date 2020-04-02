@@ -56,7 +56,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      userPhoto : app.userInfo.userPhoto,
+      nickName : app.userInfo.nickName
+    });
   },
 
   /**
@@ -101,11 +104,12 @@ Page({
         data : {
           userPhoto : userInfo.avatarUrl,
           nickName: userInfo.nickName,
-          signature: '',
+          explain : '',
           phoneNumber : '',
           weixinNumber : '',
           links : 0,
-          time : new Date()
+          time : new Date(),
+          isPublish : true
         }
       }).then((res)=>{
         // console.log(res);
