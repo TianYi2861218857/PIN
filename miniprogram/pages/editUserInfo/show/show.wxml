@@ -1,2 +1,5 @@
 <!--miniprogram/pages/editUserInfo/show/show.wxml-->
-<text>miniprogram/pages/editUserInfo/show/show.wxml</text>
+<button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">使用微信头像</button>
+<button bindtap="handleBtn">上传展示图</button>
+
+<image bindtap="handleUploadImage" src="{{ userPhoto }}" />

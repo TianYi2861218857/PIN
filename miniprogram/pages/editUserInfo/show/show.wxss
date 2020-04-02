@@ -1,1 +1,3 @@
 /* miniprogram/pages/editUserInfo/show/show.wxss */
+
+image{ width:200rpx; height:200rpx; border-radius: 50%; margin:30rpx;}
