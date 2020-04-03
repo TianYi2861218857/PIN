@@ -21,45 +21,17 @@
   </view>
 
   <view class="index-list">
-    <view class="index-list-item">
-      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
+    <view class="index-list-item" wx:for="{{ listData }}" wx:key="{{ index }}">
+      <image mode="aspectFill" src="{{ item.userPhoto }}"></image>
       <view class="index-list-text">
-        <text>天一</text>
-        <text>
-          <text class="iconfont icon-buoumaotubiao15"></text>
-          <text>100</text>
+        <text>{{ item.nickName }}</text>
+        <!-- 挂载指定属性 -->
+        <text data-id="{{ item._id }}" bindtap="handleLinks">
+          <text  class="iconfont icon-buoumaotubiao15"></text> 
+          <text>{{ item.links }}</text>
         </text>
       </view>
     </view> 
-    <view class="index-list-item">
-      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
-      <view class="index-list-text">
-        <text>天一</text>
-        <text>
-          <text class="iconfont icon-buoumaotubiao15"></text>
-          <text>100</text>
-        </text>
-      </view>
-    </view> 
-    <view class="index-list-item">
-      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
-      <view class="index-list-text">
-        <text>天一</text>
-        <text>
-          <text class="iconfont icon-buoumaotubiao15"></text>
-          <text>100</text>
-        </text>
-      </view>
-    </view> 
-    <view class="index-list-item">
-      <image mode="aspectFill" src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640"></image>
-      <view class="index-list-text">
-        <text>天一</text>
-        <text>
-          <text class="iconfont icon-buoumaotubiao15"></text>
-          <text>100</text>
-        </text>
-      </view>
-    </view> 
+
   </view>
 </view>

@@ -1,4 +1,7 @@
 // miniprogram/pages/index/index.js
+
+const db  =  wx.cloud.database()
+
 Page({
 
   /**
@@ -8,7 +11,8 @@ Page({
     imgUrls : [
       'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
       'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-    ]
+    ],
+    listData : []
   },
 
   /**
@@ -22,7 +26,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    db.collection('users').field({
+      userPhoto : true,
+      nickName : true,
+      links :true
+    }).get().then((res)=>{
+      this.setData({
+        listData : res.data
+      });
+    });
   },
 
   /**
@@ -65,5 +77,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleLinks(ev){
+    let id = ev.target.dataset.id;    //挂载的属性,然后可以在ev.target.dataset中拿到
+    db.collection('users').doc(id).update({
+      data : {
+        links : 5
+      }
+    }).then((res)=>{
+
+    });
   }
 })
