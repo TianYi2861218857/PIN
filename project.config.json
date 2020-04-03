@@ -54,6 +54,14 @@
 					"id": -1,
 					"name": "pages/editUserInfo/editUserInfo",
 					"pathName": "pages/editUserInfo/editUserInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/detail/detail",
+					"pathName": "pages/detail/detail",
+					"query": "userId= 79a2c43f5e85c7c4003f675f2917f131",
 					"scene": null
 				}
 			]

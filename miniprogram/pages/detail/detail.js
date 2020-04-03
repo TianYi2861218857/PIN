@@ -1,18 +1,46 @@
 // miniprogram/pages/detail/detail.js
+
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    detail : {},
+    isFriend : false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    let userId = options.userId;
+    db.collection('users').doc(userId).get().then((res)=>{
+      this.setData({
+        detail : res.data
+      });
+      // let friendList = res.data.friendList;
+      // if (friendList.includes(app.userInfo._id) ){
+      //   this.setData({
+      //     isFriend : true
+      //   });
+      // }
+      // else{
+      //   this.setData({
+      //     isFriend : false
+      //   },()=>{
+      //     if ( userId == app.userInfo._id ){
+      //       this.setData({
+      //         isFriend : true,
+      //         isHidden : true
+      //       });
+      //     }
+      //   });
+      // }
+    });
   },
 
   /**

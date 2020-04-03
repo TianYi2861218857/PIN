@@ -12,7 +12,8 @@ Page({
       'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
       'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
     ],
-    listData : []
+    listData : [],
+    current : 'links'
   },
 
   /**
@@ -26,15 +27,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    db.collection('users').field({
-      userPhoto : true,
-      nickName : true,
-      links :true
-    }).get().then((res)=>{
-      this.setData({
-        listData : res.data
-      });
-    });
+    this.getListData();
   },
 
   /**
@@ -80,6 +73,7 @@ Page({
   },
   handleLinks(ev){
     let id = ev.target.dataset.id;    //挂载的属性,然后可以在ev.target.dataset中拿到
+    /**  客户端点赞,只能给自己点赞,无权限为其他用户点赞
     db.collection('users').doc(id).update({
       data : {
         links : 5
@@ -87,5 +81,60 @@ Page({
     }).then((res)=>{
 
     });
-  }
+    */
+    wx.cloud.callFunction({
+      name :'update',
+      data : {
+        collection :'users',
+        doc : id,
+        data : "{links : _.inc(1)}"
+      }
+    }).then((res)=>{
+      // console.log(res);
+      let updated = res.result.stats.updated;
+      if (updated){
+        let cloneListData = [...this.data.listData];
+        for (let i = 0; i < cloneListData.length;i++){
+          if (cloneListData[i]._id == id ){
+            cloneListData[i].links++;
+          }
+        }
+        this.setData({
+          listData : cloneListData
+        });
+      }
+    });
+  },
+  handleCurrent(ev){
+    let current = ev.target.dataset.current;
+    if( current == this.data.current ){
+      return false;
+    }
+    this.setData({
+      current
+    },()=>{
+      this.getListData();
+    });
+  },
+  getListData(){
+    db.collection('users')
+    .field({
+      userPhoto : true,
+      nickName : true,
+      links :true
+    })
+    .orderBy(this.data.current, 'desc')
+    .get()
+    .then((res)=>{
+      this.setData({
+        listData : res.data
+      });
+    });
+  },
+  handleDetail(ev){
+    let id = ev.target.dataset.id;
+    wx.navigateTo({
+      url: '/pages/detail/detail?userId=' + id
+    })
+  },
 })

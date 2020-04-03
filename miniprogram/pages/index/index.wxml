@@ -1,5 +1,8 @@
 <!--miniprogram/pages/index/index.wxml-->
 
+<wxs src="../../utils/wordSplit.wxs" module="m1" />
+<wxs src="../../utils/unitFormat.wxs" module="m2" />
+
 <view class="index">
   <!-- 是否显示轮播图上的点,自动轮播,轮播时间,间隔时间 -->
   <swiper class="index-swiper" indicator-dots="{{true}}"
@@ -16,19 +19,19 @@
   </swiper>
 
   <view class="index-tab">
-    <view class="active">人气榜</view>
-    <view>新品榜</view>
+    <view class="{{ current == 'links' ? 'active' : '' }}"  data-current="links" bindtap="handleCurrent">人气榜</view>
+    <view class="{{ current == 'new' ? 'active' : '' }}"  data-current="new" bindtap="handleCurrent">新品榜</view>
   </view>
 
   <view class="index-list">
     <view class="index-list-item" wx:for="{{ listData }}" wx:key="{{ index }}">
-      <image mode="aspectFill" src="{{ item.userPhoto }}"></image>
+      <image mode="aspectFill" src="{{ item.userPhoto }}" data-id="{{ item._id }}" bindtap="handleDetail"></image>
       <view class="index-list-text">
-        <text>{{ item.nickName }}</text>
+        <text>{{ m1.wordSplit(item.nickName) }}</text>
         <!-- 挂载指定属性 -->
         <text data-id="{{ item._id }}" bindtap="handleLinks">
           <text  class="iconfont icon-buoumaotubiao15"></text> 
-          <text>{{ item.links }}</text>
+          <text>{{ m2.unitFormat(item.links) }}</text>
         </text>
       </view>
     </view> 

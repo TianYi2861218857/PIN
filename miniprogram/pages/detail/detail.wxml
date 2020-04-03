@@ -1,2 +1,47 @@
 <!--miniprogram/pages/detail/detail.wxml-->
-<text>miniprogram/pages/detail/detail.wxml</text>
+<view class="detail">
+
+    <!-- <block wx:if="{{ !isHidden }}">
+      <button wx:if="{{ isFriend }}">已参与拼购</button>
+      <button wx:else bindtap="handleAddFriend">拼一下</button>
+    </block> -->
+    <button wx:if="{{ isFriend }}">已参与拼购</button>
+      <button wx:else bindtap="handleAddFriend">拼一下</button>
+    <view class="detail-item">
+      <text>名称：</text>
+      <text>{{ detail.nickName }}</text>
+    </view>
+    <view class="detail-item">
+      <text>展示图：</text>
+      <image src="{{ detail.userPhoto }}" />
+    </view>
+    <view class="detail-item">
+      <text>信息说明：</text>
+      <text>{{ detail.explain }}</text>
+    </view>
+    <view class="detail-item">
+      <text>手机号: </text>
+      <text>{{ detail.phoneNumber}}</text>
+    </view>
+    <view class="detail-item">
+      <text>微信号: </text>
+      <text>{{ detail.weixinNumber}}</text>
+    </view>
+    <!-- <view class="detail-item">
+      <text>手机号：</text>
+      <block wx:if="{{ isFriend }}">
+        <text class="detail-phoneNumber">{{ detail.phoneNumber }}</text>
+        <call-phone wx:if="{{ detail.phoneNumber }}" phoneNumber="{{ detail.phoneNumber }}" />
+      </block>
+      <text wx:else>参与"拼一下"可见</text>
+    </view>
+    <view class="detail-item">
+      <text>微信号：</text>
+      <block wx:if="{{ isFriend }}">
+        <text class="detail-weixinNumber">{{ detail.weixinNumber }}</text>
+        <copy-text wx:if="{{ detail.weixinNumber }}" copyText="{{ detail.weixinNumber }}" />
+      </block>
+      <text wx:else>参与"拼一下"可见</text>
+    </view> -->
+
+</view>
