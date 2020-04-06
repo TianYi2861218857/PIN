@@ -1,12 +1,10 @@
 <!--miniprogram/pages/detail/detail.wxml-->
 <view class="detail">
 
-    <!-- <block wx:if="{{ !isHidden }}">
-      <button wx:if="{{ isFriend }}">已参与拼购</button>
+    <block wx:if="{{ !isHidden }}">
+      <button wx:if="{{ isFriend }}">已参与"拼一下"</button>
       <button wx:else bindtap="handleAddFriend">拼一下</button>
-    </block> -->
-    <button wx:if="{{ isFriend }}">已参与拼购</button>
-      <button wx:else bindtap="handleAddFriend">拼一下</button>
+    </block>
     <view class="detail-item">
       <text>名称：</text>
       <text>{{ detail.nickName }}</text>
@@ -20,16 +18,6 @@
       <text>{{ detail.explain }}</text>
     </view>
     <view class="detail-item">
-      <text>手机号: </text>
-      <text class="detail-phoneNumber">{{ detail.phoneNumber}}</text>
-      <call-phone phoneNumber="{{detail.phoneNumber}}" />
-    </view>
-    <view class="detail-item">
-      <text>微信号: </text>
-      <text class="detail-weixinNumber">{{ detail.weixinNumber}}</text>
-      <copy-text copyText="{{ detail.weixinNumber }}" />
-    </view>
-    <!-- <view class="detail-item">
       <text>手机号：</text>
       <block wx:if="{{ isFriend }}">
         <text class="detail-phoneNumber">{{ detail.phoneNumber }}</text>
@@ -44,6 +32,6 @@
         <copy-text wx:if="{{ detail.weixinNumber }}" copyText="{{ detail.weixinNumber }}" />
       </block>
       <text wx:else>参与"拼一下"可见</text>
-    </view> -->
+    </view>
 
 </view>

@@ -12,7 +12,8 @@ Page({
     userPhoto: "/images/user/user-unlogin.png",
     nickName: "世界 ",
     logged: false,
-    disabled : true
+    disabled : true,
+    id : ''
   },
 
   /**
@@ -40,8 +41,9 @@ Page({
             userPhoto : app.userInfo.userPhoto,
             nickName : app.userInfo.nickName,
             logged : true,
-            id : app.userInfo._id //提前+,问题:(在"我的"中个人主页显示错误,在detail.jsz中无法拿到options中的userId)
+            id : app.userInfo._id 
           });
+          this.getMessage(); 
         }
         else{
           this.setData({
@@ -59,7 +61,8 @@ Page({
   onShow: function () {
     this.setData({
       userPhoto : app.userInfo.userPhoto,
-      nickName : app.userInfo.nickName
+      nickName : app.userInfo.nickName,
+      id : app.userInfo._id 
     });
   },
 
@@ -110,7 +113,8 @@ Page({
           weixinNumber : '',
           links : 0,
           time : new Date(),
-          isPublish : true
+          isPublish : true,
+          oncePIN : []
         }
       }).then((res)=>{
         // console.log(res);
@@ -120,10 +124,37 @@ Page({
           this.setData({
             userPhoto : app.userInfo.userPhoto,
             nickName : app.userInfo.nickName,
-            logged : true
+            logged : true,
+            id : app.userInfo._id 
           });
         });
       });
     }
+  },
+  getMessage(){
+    db.collection('message').where({
+      userId : app.userInfo._id
+    }).watch({
+      onChange: function (snapshot) {
+        if ( snapshot.docChanges.length ){
+          let list = snapshot.docChanges[0].doc.list;
+          if( list.length ){
+            wx.showTabBarRedDot({
+              index: 2
+            });
+            app.userMessage = list;
+          }
+          else{
+            wx.hideTabBarRedDot({
+              index: 2
+            })
+            app.userMessage = [];
+          }
+        }
+      },
+      onError: function (err) {
+        console.error('the watch closed because of error', err)
+      }
+    });
   }
 })
