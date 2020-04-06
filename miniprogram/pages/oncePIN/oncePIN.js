@@ -1,11 +1,15 @@
 // miniprogram/pages/oncePIN/oncePIN.js
+
+const app = getApp()
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    friendList : []
   },
 
   /**
@@ -19,7 +23,18 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    db.collection('users').where({
+      oncePIN : app.userInfo._id
+    }).field({
+      userPhoto : true,
+      nickName : true
+    }).get().then((res)=>{
 
+      this.setData({
+        oncePIN: res.data
+      });
+
+    });
   },
 
   /**

@@ -16,7 +16,7 @@
     </navigator>
     <navigator url="../oncePIN/oncePIN" open-type="navigate">
       <view class="user-list-item">
-        <text>拼购商品列表</text>
+        <text>拼客列表</text>
         <text class="iconfont icon-youjiantou"></text>
       </view>
     </navigator>

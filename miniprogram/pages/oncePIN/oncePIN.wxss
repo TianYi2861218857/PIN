@@ -1,1 +1,6 @@
 /* miniprogram/pages/oncePIN/oncePIN.wxss */
+
+.oncePIN{ margin-top:40rpx;}
+.oncePIN-item{ height:120rpx; border-bottom: 1px #b4b5b6 dashed; padding:10rpx; display: flex; align-items: center; justify-content: space-between;}
+.oncePIN-item view{ display: flex; align-items: center;}
+.oncePIN-item image{ width:100rpx; height:100rpx; border-radius: 50%;}

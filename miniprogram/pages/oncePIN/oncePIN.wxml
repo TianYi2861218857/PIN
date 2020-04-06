@@ -1,2 +1,13 @@
 <!--miniprogram/pages/oncePIN/oncePIN.wxml-->
-<text>miniprogram/pages/oncePIN/oncePIN.wxml</text>
+<view class="oncePIN">
+  <text>拼客列表：</text>
+  <navigator wx:for="{{ oncePIN }}" wx:key="{{ index }}" url="{{ '../detail/detail?userId=' + item._id }}" open-type="navigate">
+    <view class="oncePIN-item">
+      <view>
+        <image src="{{ item.userPhoto }}" />
+        <text>{{ item.nickName }}</text>
+      </view>
+      <text class="iconfont iconarrowRight"></text>
+    </view>
+  </navigator>
+</view>
