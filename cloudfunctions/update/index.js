@@ -16,12 +16,25 @@ exports.main = async (event, context) => {
     if(typeof event.data == 'string'){
       event.data = eval('('+event.data+')');
     }
-    return await db.collection(event.collection).doc(event.doc)
-    .update({
-      data: {
-        ...event.data
-      },
-    })
+
+    if( event.doc ){
+      return await db.collection(event.collection)
+        .doc(event.doc)
+        .update({
+          data: {
+            ...event.data
+          }
+        })
+    }
+    else{
+      return await db.collection(event.collection)
+        .where({ ...event.where })
+        .update({
+          data: {
+            ...event.data
+          }
+        })
+    }
   } catch(e) {
     console.error(e)
   }

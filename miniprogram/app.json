@@ -12,7 +12,8 @@
     "pages/editUserInfo/explain/explain",
     "pages/editUserInfo/publish/publish",
     "pages/editUserInfo/phone/phone",
-    "pages/editUserInfo/weixin/weixin"
+    "pages/editUserInfo/weixin/weixin",
+    "components/callPhone/callPhone"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -52,5 +53,4 @@
     ]
   },
   "sitemapLocation": "sitemap.json"
-  
 }

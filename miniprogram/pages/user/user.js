@@ -39,7 +39,8 @@ Page({
           this.setData({
             userPhoto : app.userInfo.userPhoto,
             nickName : app.userInfo.nickName,
-            logged : true
+            logged : true,
+            id : app.userInfo._id //提前+,问题:(在"我的"中个人主页显示错误,在detail.jsz中无法拿到options中的userId)
           });
         }
         else{

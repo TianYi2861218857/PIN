@@ -21,11 +21,13 @@
     </view>
     <view class="detail-item">
       <text>手机号: </text>
-      <text>{{ detail.phoneNumber}}</text>
+      <text class="detail-phoneNumber">{{ detail.phoneNumber}}</text>
+      <call-phone phoneNumber="{{detail.phoneNumber}}" />
     </view>
     <view class="detail-item">
       <text>微信号: </text>
-      <text>{{ detail.weixinNumber}}</text>
+      <text class="detail-weixinNumber">{{ detail.weixinNumber}}</text>
+      <copy-text copyText="{{ detail.weixinNumber }}" />
     </view>
     <!-- <view class="detail-item">
       <text>手机号：</text>
