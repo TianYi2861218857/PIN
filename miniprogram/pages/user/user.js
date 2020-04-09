@@ -27,6 +27,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+
+    this.getLocation();
+
     wx.cloud.callFunction({
       name : 'login' ,
       data : {}
@@ -114,6 +117,9 @@ Page({
           links : 0,
           time : new Date(),
           isPublish : true,
+          longitude: this.longitude,
+          latitude: this.latitude,
+          location: db.Geo.Point(this.longitude, this.latitude),
           oncePIN : []
         }
       }).then((res)=>{
@@ -156,5 +162,14 @@ Page({
         console.error('the watch closed because of error', err)
       }
     });
+  },
+  getLocation(){
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        this.latitude = res.latitude
+        this.longitude = res.longitude
+      }
+    })
   }
 })

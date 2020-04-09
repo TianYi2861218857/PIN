@@ -52,5 +52,10 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你将在附近地图中发布拼单信息"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }
