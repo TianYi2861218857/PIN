@@ -3,6 +3,8 @@
 <wxs src="../../utils/wordSplit.wxs" module="m1" />
 <wxs src="../../utils/unitFormat.wxs" module="m2" />
 
+<search />
+
 <view class="index">
   <!-- 是否显示轮播图上的点,自动轮播,轮播时间,间隔时间 -->
   <swiper class="index-swiper" indicator-dots="{{true}}"
