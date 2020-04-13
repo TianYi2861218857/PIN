@@ -8,10 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls : [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-    ],
+    imgUrls : [],
     listData : [],
     current : 'links'
   },
@@ -28,6 +25,7 @@ Page({
    */
   onReady: function () {
     this.getListData();
+    this.getBannerList();
   },
 
   /**
@@ -137,4 +135,12 @@ Page({
       url: '/pages/detail/detail?userId=' + id
     })
   },
+  getBannerList(){
+    db.collection('banner').get().then((res)=>{
+      // console.log(res.data)
+      this.setData({
+        imgUrls : res.data
+      });
+    });
+  }
 })

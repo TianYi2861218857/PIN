@@ -14,7 +14,7 @@
     <!-- <block wx:for="{{background}}" wx:key="*this"> -->
       <swiper-item>
         <!-- item 每一项 -->
-        <image src="{{item}}" class="slide-image" />
+        <image src="{{item.fileId}}" class="slide-image" />
         <!-- <view class="swiper-item {{item}}"></view> -->
       </swiper-item>
     </block>
