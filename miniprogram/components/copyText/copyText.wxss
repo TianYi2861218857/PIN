@@ -1,1 +1,2 @@
 /* components/copyText/copyText.wxss */
+.text-copyText{font-size: 40rpx; color: #5d96f0;}
