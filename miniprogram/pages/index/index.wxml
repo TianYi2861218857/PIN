@@ -6,16 +6,14 @@
 <search />
 
 <view class="index">
-  <!-- 是否显示轮播图上的点,自动轮播,轮播时间,间隔时间 -->
+  <!-- 是否显示轮播图上的点,自动轮播,自动衔接（首尾）---轮播时间(interval),间隔时间(duration) -->
   <swiper class="index-swiper" indicator-dots="{{true}}"
     autoplay="{{true}}"  circular="{{true}}">
     <!-- wx:for 循环渲染指令(变量) wx:key  唯一标识(index为123索引值) -->
     <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-    <!-- <block wx:for="{{background}}" wx:key="*this"> -->
       <swiper-item>
         <!-- item 每一项 -->
         <image src="{{item.fileId}}" class="slide-image" />
-        <!-- <view class="swiper-item {{item}}"></view> -->
       </swiper-item>
     </block>
   </swiper>

@@ -89,7 +89,9 @@ Component({
       });
     }
   },
+  //定义生命周期方法
   lifetimes: {
+    //在组件实力进入页面节点树时执行
     attached: function () {
       db.collection('users').doc(this.data.messageId).field({
         userPhoto : true,

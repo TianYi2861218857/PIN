@@ -19,7 +19,7 @@ Page({
    */
   onLoad: function (options) {
     // console.log("我的测试");
-    console.log(options);
+    // console.log(options);
     let userId = options.userId;
     db.collection('users').doc(userId).get().then((res)=>{
       this.setData({
@@ -102,7 +102,7 @@ Page({
         if (res.data.length){   // 更新
           if ( res.data[0].list.includes(app.userInfo._id) ){
             wx.showToast({
-              title: '已提交过申请过!'
+              title: '已提交过申请!'
             })
           }
           else{
